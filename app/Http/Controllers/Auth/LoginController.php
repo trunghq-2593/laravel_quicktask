@@ -11,7 +11,11 @@ class LoginController extends Controller
 {
     public function loginForm()
     {
-        return view('auth.login');
+        if (Auth::check()){
+            return redirect()->route('tasks');
+        } else {
+            return view('auth.login');
+        }
     }
 
     public function handleLogin(Request $request)
@@ -21,6 +25,6 @@ class LoginController extends Controller
 
     public function logOut(){
         Auth::logout();
-        return view('auth.login');
+        return redirect()->route('auth.loginForm');
     }
 }

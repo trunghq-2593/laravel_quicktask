@@ -5,6 +5,7 @@ use App\Models\Task;
 use Illuminate\Http\Request;
 use \Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Auth\LoginController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,25 +18,21 @@ use App\Http\Controllers\Auth\LoginController;
 |
 */
 
-Route::group([
-    'namespace' => 'Auth',
-    'middleware' =>'checkAuth'
-], function () {
-    Route::get('login', [LoginController::class,'loginForm'])->name('auth.loginForm');
-    Route::get('login', [LoginController::class,'logOut'])->name('auth.logout');
-    Route::post('login', [LoginController::class,'handleLogin'])->name('auth.login')->middleware('checkUser');
-});
+Route::post('login', [LoginController::class, 'handleLogin'])->name('auth.login')->middleware('checkUser');
+Route::get('logOut', [LoginController::class, 'logOut'])->name('auth.logout');
 
-Route::group([
-    'middleware' => 'checkAuth'
-], function (){
+Route::group(
+    [
+        'middleware' => 'localization'
+    ], function () {
+    Route::get('login', [LoginController::class, 'loginForm'])->name('auth.loginForm')->middleware(['checkUser']);
     Route::get('/', function () {
-        $tasks = Task::orderBy('created_at', 'asc')->get();
+        $tasks = Auth::user()->task;
 
         return view('tasks', [
             'tasks' => $tasks
         ]);
-    })->name('tasks');
+    })->name('tasks')->middleware('checkUser');
 
     Route::post('/task', function (Request $request) {
         $validator = Validator::make($request->all(), [
@@ -51,6 +48,7 @@ Route::group([
         // Create The Task...
         $task = new Task;
         $task->name = $request->name;
+        $task->user_id = \Illuminate\Support\Facades\Auth::user()->id;
         $task->save();
 
         return redirect('/');
@@ -58,9 +56,13 @@ Route::group([
 
     Route::delete('/task/{task}', function (Task $task) {
         $task->delete();
-
         return redirect('/');
     });
-});
+    Route::get('change-language/{language}', [\App\Http\Controllers\LanguageController::class, 'changeLanguage'])->name('change-language');
+
+}
+);
+
+
 
 

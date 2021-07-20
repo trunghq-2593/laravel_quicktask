@@ -1,0 +1,10 @@
+{
+    "password" : "Password",
+    "task": "Task",
+    "name": "Name",
+    "logout": "Logout",
+    "login": "Login",
+    "copyright": "Copyright belongs to Sun Asterisk © 2021.",
+    "addTask": "addTask",
+    "currentTask": "Current Task"
+}

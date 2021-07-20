@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Task;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,17 +13,19 @@ class CheckUser
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure $next
      * @return mixed
      */
     public function handle(Request $request, Closure $next)
     {
         $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) {
+        if (isset($credentials) && Auth::attempt($credentials)) {
+            return $next($request);
+        } else if (Auth::check()) {
             return $next($request);
         } else {
-            return redirect()->route('auth.loginForm')->with('errors','Thông tin bạn nhập không đúng');
+            return response()->view('auth.login');
         }
     }
 }
