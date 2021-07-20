@@ -9,7 +9,7 @@ $users = User::where('isAdmin', '=', 1)->get();
 @section('content')
     @if(\Illuminate\Support\Facades\Auth::user()->isAdmin == 0)
         <section class="content">
-            <div class="container-fluid">
+            <div class="container">
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
@@ -33,7 +33,7 @@ $users = User::where('isAdmin', '=', 1)->get();
                                         <th>{{__('name')}}</th>
                                         <th>Email</th>
                                         <th>{{__('task')}}</th>
-{{--                                        <th>Ngày tạo</th>--}}
+                                        {{--                                        <th>Ngày tạo</th>--}}
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -44,17 +44,17 @@ $users = User::where('isAdmin', '=', 1)->get();
                                             <td>{{$user->email}}</td>
                                             <td>
                                                 <details>
-                                                    <summary>Nhiệm vụ</summary>
-                                                    @if(!empty($user->task))
-                                                        @foreach($user->task as $task)
-                                                            <p style="margin-bottom: 0px">-{{$task->name}}</p>
-                                                        @endforeach
-                                                    @else
-                                                        <p>Chưa nhập nhiệm vụ</p>
+                                                    <summary>{{__('task')}}/summary>
+                                                        @if(!empty($user->task))
+                                                            @foreach($user->task as $task)
+                                                                <p style="margin-bottom: 0px">-{{$task->name}}</p>
+                                                            @endforeach
+                                                        @else
+                                                            <p>{{__('taskNotFound')}}</p>
                                                     @endif
                                                 </details>
                                             </td>
-{{--                                            <td>{{$user->task->first()->created_at->format('d/m/y')}}</td>--}}
+                                            {{--                                            <td>{{$user->task->first()->created_at->format('d/m/y')}}</td>--}}
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -70,7 +70,7 @@ $users = User::where('isAdmin', '=', 1)->get();
     @else
         <!-- Bootstrap Boilerplate... -->
 
-        <div class="panel-body">
+        <div class="panel-body container">
             <!-- Display Validation Errors -->
         @include('common.errors')
 
@@ -100,11 +100,7 @@ $users = User::where('isAdmin', '=', 1)->get();
 
         <!-- TODO: Current Tasks -->
         @if (count($tasks) > 0)
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    {{__('currentTask')}}
-                </div>
-
+            <div class="panel panel-default container">
                 <div class="panel-body">
                     <table class="table table-striped task-table">
 

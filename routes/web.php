@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::post('login', [LoginController::class, 'handleLogin'])->name('auth.login')->middleware('checkUser');
+
 Route::get('logOut', [LoginController::class, 'logOut'])->name('auth.logout');
 
 Route::group(
@@ -26,13 +27,8 @@ Route::group(
         'middleware' => 'localization'
     ], function () {
     Route::get('login', [LoginController::class, 'loginForm'])->name('auth.loginForm')->middleware(['checkUser']);
-    Route::get('/', function () {
-        $tasks = Auth::user()->task;
 
-        return view('tasks', [
-            'tasks' => $tasks
-        ]);
-    })->name('tasks')->middleware('checkUser');
+    Route::get('/', [\App\Http\Controllers\TaskController::class, 'getTask'])->name('tasks')->middleware('checkUser');
 
     Route::post('/task', function (Request $request) {
         $validator = Validator::make($request->all(), [
@@ -58,8 +54,8 @@ Route::group(
         $task->delete();
         return redirect('/');
     });
-    Route::get('change-language/{language}', [\App\Http\Controllers\LanguageController::class, 'changeLanguage'])->name('change-language');
 
+    Route::get('change-language/{language}', [\App\Http\Controllers\LanguageController::class, 'changeLanguage'])->name('change-language');
 }
 );
 

@@ -6,5 +6,8 @@
     "login": "Login",
     "copyright": "Copyright belongs to Sun Asterisk © 2021.",
     "addTask": "addTask",
-    "currentTask": "Current Task"
+    "currentTask": "Current Task",
+    "taskNotFound": "You have not entered the quest",
+    "title": "Laravel Quickstart - Basic",
+    "error": "Whoops! Something went wrong"
 }

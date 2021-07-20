@@ -6,5 +6,9 @@
     "login": "Đăng nhập",
     "copyright": "Bản quyền thuộc về Sun Asterisk © 2021.",
     "addTask": "Thêm nhiệm vụ",
-    "currentTask": "Nhiệm vụ hiện tại"
+    "currentTask": "Nhiệm vụ hiện tại",
+    "taskNotFound": "Bạn chưa nhập nhiệm vụ",
+    "title": "Quản lý nhiệm vụ",
+    "error": "Có lỗi kìa :)",
+    "required": "lol"
 }

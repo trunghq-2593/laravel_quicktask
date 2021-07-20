@@ -23,8 +23,10 @@ class LoginController extends Controller
         return redirect()->route('tasks');
     }
 
-    public function logOut(){
+    public function logOut()
+    {
         Auth::logout();
+
         return redirect()->route('auth.loginForm');
     }
 }
