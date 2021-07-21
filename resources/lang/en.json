@@ -9,5 +9,6 @@
     "currentTask": "Current Task",
     "taskNotFound": "You have not entered the quest",
     "title": "Laravel Quickstart - Basic",
-    "error": "Whoops! Something went wrong"
+    "error": "Whoops! Something went wrong",
+    "loginFail": "Email or password not precision"
 }

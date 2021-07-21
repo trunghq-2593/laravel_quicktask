@@ -19,10 +19,7 @@ class CheckUser
      */
     public function handle(Request $request, Closure $next)
     {
-        $credentials = $request->only('email', 'password');
-        if (isset($credentials) && Auth::attempt($credentials)) {
-            return $next($request);
-        } else if (Auth::check()) {
+        if (Auth::check()) {
             return $next($request);
         } else {
             return response()->view('auth.login');

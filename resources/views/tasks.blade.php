@@ -7,6 +7,11 @@ $users = User::where('isAdmin', '=', 1)->get();
 @extends('layouts.app')
 
 @section('content')
+    @if(session('message'))
+        <div class="container alert alert-success">
+            {{session('message')}}
+        </div>
+    @endif
     @if(\Illuminate\Support\Facades\Auth::user()->isAdmin == 0)
         <section class="content">
             <div class="container">
@@ -15,13 +20,6 @@ $users = User::where('isAdmin', '=', 1)->get();
                         <div class="card">
                             <div class="card-header">
                                 <div class="card-tools">
-                                    <div class="input-group input-group-sm" style="width: 150px;">
-                                        <div class="input-group-append">
-                                            <button type="submit" class="btn btn-default">
-                                                <i class="fas fa-search"></i>
-                                            </button>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                             <!-- /.card-header -->
@@ -44,13 +42,13 @@ $users = User::where('isAdmin', '=', 1)->get();
                                             <td>{{$user->email}}</td>
                                             <td>
                                                 <details>
-                                                    <summary>{{__('task')}}/summary>
-                                                        @if(!empty($user->task))
-                                                            @foreach($user->task as $task)
-                                                                <p style="margin-bottom: 0px">-{{$task->name}}</p>
-                                                            @endforeach
-                                                        @else
-                                                            <p>{{__('taskNotFound')}}</p>
+                                                    <summary>{{__('task')}}</summary>
+                                                    @if(!empty($user->task))
+                                                        @foreach($user->task as $task)
+                                                            <p style="margin-bottom: 0px">-{{$task->name}}</p>
+                                                        @endforeach
+                                                    @else
+                                                        <p>{{__('taskNotFound')}}</p>
                                                     @endif
                                                 </details>
                                             </td>

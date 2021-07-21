@@ -18,14 +18,14 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::post('login', [LoginController::class, 'handleLogin'])->name('auth.login')->middleware('checkUser');
-
-Route::get('logOut', [LoginController::class, 'logOut'])->name('auth.logout');
-
 Route::group(
     [
         'middleware' => 'localization'
     ], function () {
+    Route::post('login', [LoginController::class, 'handleLogin'])->name('auth.login');
+
+    Route::get('logOut', [LoginController::class, 'logOut'])->name('auth.logout');
+
     Route::get('login', [LoginController::class, 'loginForm'])->name('auth.loginForm')->middleware(['checkUser']);
 
     Route::get('/', [\App\Http\Controllers\TaskController::class, 'getTask'])->name('tasks')->middleware('checkUser');

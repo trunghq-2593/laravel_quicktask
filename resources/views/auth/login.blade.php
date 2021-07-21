@@ -38,6 +38,22 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="card2 card border-0 px-4 py-5">
+                        @if(session('message'))
+                            <div class="container alert alert-success">
+                                {{session('message')}}
+                            </div>
+                        @endif
+                        @if(isset($message))
+                            <small class="text-danger rule">{{$message}}</small>
+                        @endif
+                        @if(count($errors) >0)
+                            <div class="alert alert-danger">
+                                @foreach($errors->all() as $err)
+                                    {{$err}}
+                                    <br>
+                                @endforeach
+                            </div>
+                        @endif
                         <form action="{{route('auth.login')}}" class="mt-4" method="POST">
                             @csrf
                             <div class="row px-3"><label class="mb-1">
