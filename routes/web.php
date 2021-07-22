@@ -29,7 +29,7 @@ Route::group(['middleware' => ['localization', 'checkUser']], function () {
     Route::resource('tasks', TaskController::class)->only([
         'index', 'store', 'destroy'
     ]);
-
-    Route::get('change-language/{language}', [\App\Http\Controllers\LanguageController::class, 'changeLanguage'])->name('change-language');
 }
 );
+Route::get('change-language/{language}', [\App\Http\Controllers\LanguageController::class, 'changeLanguage'])->name('change-language');
+

@@ -1,0 +1,21 @@
+{
+    "password" : "Password",
+    "task": "Task",
+    "name": "Name",
+    "logout": "Logout",
+    "login": "Login",
+    "copyright": "Copyright belongs to Sun Asterisk © 2021.",
+    "addTask": "addTask",
+    "currentTask": "Current Task",
+    "taskNotFound": "You have not entered the quest",
+    "title": "Laravel Quickstart - Basic",
+    "error": "Whoops! Something went wrong",
+    "loginFail": "Email or password not precision",
+    "enterEmail": "Please enter your email",
+    "enterPassword": "Please enter your password",
+    "loginSuccess": "Login successfully",
+    "logoutSuccess": "Logout successfully",
+    "addSuccess": "Add successfully",
+    "deleteSuccess": "Delete successfully",
+    "deleteTask": "Delete Task"
+}
