@@ -109,7 +109,7 @@
                                         {{ method_field('DELETE') }}
 
                                         <button type="submit" class="btn btn-danger">
-                                            <i class="fa fa-trash"></i> Delete
+                                            <i class="fa fa-trash"></i> {{ __('deleteTask') }}
                                         </button>
                                     </form>
                                 </td>

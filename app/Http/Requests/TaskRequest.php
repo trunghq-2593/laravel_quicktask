@@ -27,4 +27,16 @@ class TaskRequest extends FormRequest
             'name' => 'required|max:255',
         ];
     }
+
+    public function messages()
+    {
+        if (app()->getLocale() == 'vi') {
+            return [
+                'name.required' => 'Vui lòng không để trống nhiệm vụ.',
+                'name.max' => 'Nhiệm vụ không vượt quá 255 ký tự.',
+            ];
+        }
+
+        return [];
+    }
 }

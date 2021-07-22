@@ -1,0 +1,21 @@
+{
+    "password": "Mật khẩu",
+    "task": "Nhiệm vụ",
+    "name": "Tên",
+    "logout": "Đăng xuất",
+    "login": "Đăng nhập",
+    "copyright": "Bản quyền thuộc về Sun Asterisk © 2021.",
+    "addTask": "Thêm nhiệm vụ",
+    "currentTask": "Nhiệm vụ hiện tại",
+    "taskNotFound": "Bạn chưa nhập nhiệm vụ",
+    "title": "Quản lý nhiệm vụ",
+    "error": "Có lỗi kìa :)",
+    "loginFail": "Nhập sai thông tin đăng nhập",
+    "enterEmail": "Vui lòng nhập email",
+    "enterPassword": "Vui lòng nhập mật khẩu",
+    "loginSuccess": "Đăng nhập thành công",
+    "logoutSuccess": "Đăng xuất thành công",
+    "addSuccess": "Thêm thành công",
+    "deleteSuccess": "Xóa thành công",
+    "deleteTask": "Xóa nhiệm vụ"
+}

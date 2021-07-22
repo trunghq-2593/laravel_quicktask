@@ -28,4 +28,17 @@ class LoginRequest extends FormRequest
             'password' => 'required',
         ];
     }
+
+    public function messages()
+    {
+        if (app()->getLocale() == 'vi') {
+            return [
+                'email.required' => 'Không được để trống email.',
+                'email.email' => 'Vui lòng nhập đúng định dạng email.',
+                'password.required' => 'Không được để trống mật khẩu.'
+            ];
+        }
+
+        return [];
+    }
 }
