@@ -21,8 +21,9 @@ class LoginController extends Controller
         if (Auth::attempt($attributes)) {
             return redirect()->route('tasks.index')->with('message', __('loginSuccess'));
         }
-
-        return view('auth.login')->with('message', __('loginFail'));
+        $message =  __('loginFail');
+        
+        return view('auth.login',compact('request', 'message'));
     }
 
     public function logOut()
