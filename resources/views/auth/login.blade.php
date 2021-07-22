@@ -49,10 +49,10 @@
                             <div class="row px-3"><label class="mb-1">
                                     <h6 class="mb-0 text-sm">Email</h6>
                                 </label> <input class="mb-4" type="text" name="email"
-                                                placeholder="{{ __('enterEmail') }}"></div>
+                                                placeholder="{{ __('enterEmail') }}" value="{{ old('email',$request->email ?? null) }}"></div>
                             <div class="row px-3"><label class="mb-1">
                                     <h6 class="mb-0 text-sm">{{ __('password') }}</h6>
-                                </label> <input type="password" name="password" placeholder="{{ __('enterPassword') }}">
+                                </label> <input type="password" name="password" placeholder="{{ __('enterPassword') }}" value="{{ old('password',$request->password ?? null) }}">
                             </div>
                             <div class="row mb-3 px-3 mt-4">
                                 <button type="submit" class="btn btn-success text-center">{{ __('login') }}</button>

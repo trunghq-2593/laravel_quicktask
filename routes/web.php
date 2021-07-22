@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::group(['middleware' => ['localization', 'checkUser']], function () {
+Route::group(['middleware' => ['localization', 'checkUser', 'prevent-back-history']], function () {
     Route::post('login', [LoginController::class, 'handleLogin'])->name('auth.login')->withoutMiddleware('checkUser');
 
     Route::get('logOut', [LoginController::class, 'logOut'])->name('auth.logout');
